@@ -4,7 +4,8 @@
 	```sh
 	pip install spotipy python-dotenv
 	```
-2. Login and create a new Spotify Developer app at https://developer.spotify.com/dashboard/applications
+2. https://developer.spotify.com/dashboard/applications
+	Login and create a new Spotify Developer app
 	![](pics/2021-11-14-17-30-46.png)
 
 3. On the Dashboard open created app
