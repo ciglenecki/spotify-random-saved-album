@@ -1,6 +1,6 @@
-# Spotify - get a random saved album
+# 🍃 Spotify – get a random saved album
 
-1. Install dependencies
+1. Install dependencies:
 	```sh
 	pip install spotipy python-dotenv
 	```
