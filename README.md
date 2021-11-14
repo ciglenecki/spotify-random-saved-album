@@ -23,9 +23,9 @@
 6. Copy `Client ID` and `Client Secret` from the app's main page
 	![](pics/2021-11-14-17-32-40.png)
 
-7. Create a new file `env` at the same directory level as `src.py`
+7. Create a new file `.env` at the same directory level as `src.py`
 		
-	replace `MY_CLIENT_ID` and `MY_CLIENT_SEC` with your values and append them to `.env` file
+	replace `MY_CLIENT_ID` and `MY_CLIENT_SEC` with your values and append them to the `.env` file
 
 	```bash
 	touch .env # creates .env file
