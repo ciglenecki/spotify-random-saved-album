@@ -1,4 +1,4 @@
-# 🍃 Spotify – get a random saved album
+# 🍃 Spotify – get the URL of a random saved album
 
 # Setup
 
