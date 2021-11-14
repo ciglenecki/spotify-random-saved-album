@@ -1,9 +1,9 @@
 # Spotify - get a random saved album
 
 1. Install dependencies
-	- ```sh
-		pip install spotipy python-dotenv
-		```
+	```sh
+	pip install spotipy python-dotenv
+	```
 2. Login and create a new Spotify Developer app at https://developer.spotify.com/dashboard/applications
 	![](pics/2021-11-14-17-30-46.png)
 
@@ -16,7 +16,8 @@
 	![](pics/2021-11-14-17-32-40.png)
 
 6. Create a new file `env` at the same directory level as `src.py`
-	- replace `MY_CLIENT_ID` and `MY_CLIENT_SEC` with values you copied and append them to `.env`
+	create `.env`
+	replace `MY_CLIENT_ID` and `MY_CLIENT_SEC` with your values and append them to `.env`
 
 	```bash
 	touch .env
@@ -29,11 +30,8 @@
 	ID=854c...
 	SEC=e85e...
 	```
-	![](pics/2021-11-14-17-56-15.png)
-
 7. Run `src.py` to get an external Spotify link to a random saved album
 	```python
 	python3 src.py
 	```
-
 You have to pass the OAuth via browser once on last step
