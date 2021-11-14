@@ -5,10 +5,10 @@
    
 
 1. Download the repo:
-```
-git clone https://github.com/matejciglenecki/spotify-random-saved-album.git
-cd spotify-random-saved-album
-```
+	```
+	git clone https://github.com/matejciglenecki/spotify-random-saved-album.git
+	cd spotify-random-saved-album
+	```
 
 2. Install dependencies:
 	```sh
