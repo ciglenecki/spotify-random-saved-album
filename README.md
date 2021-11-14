@@ -1,5 +1,7 @@
 # 🍃 Spotify – get a random saved album
 
+Personal usecase: pipe the ouput (external link) to a browsere command which will open a random album
+
 1. Install dependencies:
 	```sh
 	pip install spotipy python-dotenv
