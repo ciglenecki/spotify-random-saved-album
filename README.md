@@ -24,13 +24,11 @@
 	![](pics/2021-11-14-17-32-40.png)
 
 7. Create a new file `env` at the same directory level as `src.py`
-	
-	create `.env`
-	
-	replace `MY_CLIENT_ID` and `MY_CLIENT_SEC` with your values and append them to `.env`
+		
+	replace `MY_CLIENT_ID` and `MY_CLIENT_SEC` with your values and append them to `.env` file
 
 	```bash
-	touch .env
+	touch .env # creates .env file
 	echo "ID=MY_CLIENT_ID" >> .env
 	echo "SEC=MY_CLIENT_SEC" >> .env
 	cat .env
