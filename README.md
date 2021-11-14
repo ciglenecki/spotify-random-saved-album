@@ -2,8 +2,6 @@
 
 # Setup
 
-   
-
 1. Download the repo:
 	```
 	git clone https://github.com/matejciglenecki/spotify-random-saved-album.git
@@ -26,7 +24,9 @@
 	![](pics/2021-11-14-17-32-40.png)
 
 7. Create a new file `env` at the same directory level as `src.py`
+	
 	create `.env`
+	
 	replace `MY_CLIENT_ID` and `MY_CLIENT_SEC` with your values and append them to `.env`
 
 	```bash
