@@ -1,6 +1,6 @@
 # 🍃 Spotify – get the URL of a random saved album
 
-# Setup
+## Setup
 
 1. Download the repo:
 	```
