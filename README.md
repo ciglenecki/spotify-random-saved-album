@@ -42,7 +42,8 @@
 	```python
 	python3 src.py
 	```
+### Notes
 
-You have to pass the OAuth via browser once on last step
+You have to pass the OAuth via browser once on last step.
 
-Personal usecase is to pipe the ouput (external link) to a browser command which will open a random album
+Personal usecase of this script is to pipe the ouput (external link) to a browser command which will open a random album.
