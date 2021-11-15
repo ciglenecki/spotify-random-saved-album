@@ -26,19 +26,19 @@
 7. Create a new file `.env` at the same directory level as `src.py`
 		
 	replace `MY_CLIENT_ID` and `MY_CLIENT_SEC` with your values and append them to the `.env` file
-
-	```
+	
 	File `.env` should look like this:
 	```
 	ID=854c...
 	SEC=e85e...
 	```
-	
+	We can populate `.env` with the following commands:
 	```bash
 	touch .env # creates .env file
 	echo "ID=MY_CLIENT_ID" >> .env
 	echo "SEC=MY_CLIENT_SEC" >> .env
 	cat .env
+	```
 
 8. Run `src.py` to get an external Spotify link to a random saved album
 	```python
