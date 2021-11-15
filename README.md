@@ -42,6 +42,7 @@
 	```python
 	python3 src.py
 	```
+	![](pics/2021-11-15-01-00-26.png)
 ### Notes
 
 You have to pass the OAuth via browser once on last step.
