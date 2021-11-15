@@ -17,9 +17,14 @@ sp = spotipy.Spotify(
     )
 )
 
-albums = sp.current_user_saved_albums()
-random_index = random.randint(0, len(albums["items"]) - 1)
-album = albums["items"][random_index]["album"]
+results = sp.current_user_saved_albums()
+albums = results['items']
+while results['next']:
+    results = sp.next(results)
+    albums.extend(results['items'])
+
+random_index = random.randint(0, len(albums) - 1)
+album = albums[random_index]["album"]
 album_name = album["name"]
 album_url = album["external_urls"]["spotify"]
 
