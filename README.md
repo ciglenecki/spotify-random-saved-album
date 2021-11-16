@@ -1,5 +1,9 @@
 # 🍃 Spotify – get the URL of a random saved album
 
+<p align="center">
+	<img src="pics/2021-11-15-01-00-26.png"></img>
+</p>
+
 ## Setup – 8 easy steps:
 
 1. Download the repo:
