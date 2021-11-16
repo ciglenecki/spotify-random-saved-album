@@ -1,7 +1,7 @@
 # 🍃 Spotify – get the URL of a random saved album
 
 <p align="center">
-	<img src="pics/2021-11-15-01-00-26.png"></img>
+	<img src="pics/2021-11-16-23-40-41.png"></img>
 </p>
 
 ## Setup – 8 easy steps:
@@ -48,7 +48,7 @@
 	```python
 	python3 src.py
 	```
-	![](pics/2021-11-15-01-00-26.png)
+	![](pics/2021-11-16-23-40-41.png)
 ### Notes
 
 You have to pass the OAuth via browser once on last step.
