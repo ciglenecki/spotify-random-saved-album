@@ -10,7 +10,7 @@ import json
 import argparse
 
 DAYS_CACHE_HOLD = 10
-CACHE_FILENAME_STR = "cache-spotify-random-album.json"
+CACHE_FILENAME_STR = ".cache.json"
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--no-cache", dest="no_cache",
