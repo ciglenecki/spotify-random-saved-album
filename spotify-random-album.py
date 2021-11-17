@@ -1,6 +1,6 @@
 import random
 import os
-from typing import Any, Tuple
+from typing import Any, List, Tuple
 import spotipy
 from dotenv import load_dotenv
 from spotipy.oauth2 import SpotifyOAuth
@@ -67,9 +67,13 @@ ID = os.getenv(ENV_ID_STR)
 SEC = os.getenv(ENV_SECRET_STR)
 
 
-def get_album_name_url(album: Any) -> Tuple[str, str, str]:
+def get_album_properties(album: Any) -> Tuple[str, str, str]:
     """
-    Extracts album's name and url from the Album object
+    Extracts album's properties:
+        1. artist's name
+        2. album's name
+        3. album's url
+        4. album's uri
     https://developer.spotify.com/documentation/web-api/reference/#/operations/get-multiple-albums
     """
     album = album["album"]
@@ -80,23 +84,23 @@ def get_album_name_url(album: Any) -> Tuple[str, str, str]:
     return album_artist, album_name, album_url, album_uri
 
 
-def get_albums_spotify_accumulate(spotify: spotipy.Spotify):
+def get_albums_spotify_accumulate(spotify: spotipy.Spotify) -> List:
     """
-    Accumulates all saved albums.
+    Accumulates all saved albums into a list.
     "next" returns the next subset of albums in a while loop until all albums are accumulated.
     """
     subset_albums = spotify.current_user_saved_albums(limit=FETCH_ALBUMS_LIMIT)
-    albums = list(map(get_album_name_url, subset_albums["items"]))
+    albums = list(map(get_album_properties, subset_albums["items"]))
     while subset_albums["next"]:
         subset_albums = spotify.next(subset_albums)
-        album_info = list(map(get_album_name_url, subset_albums["items"]))
+        album_info = list(map(get_album_properties, subset_albums["items"]))
         albums.extend(album_info)
     return albums
 
 
 def save_albums_to_cache(albums, cache_filename):
     """
-    Dumps albums object as JSON and saves it to cache file
+    Dumps albums list object as JSON and saves it to the cache file (.cache.json)
     """
     with open(cache_filename, "w") as cache:
         cache.write(json.dumps(albums))
@@ -105,7 +109,9 @@ def save_albums_to_cache(albums, cache_filename):
 
 def get_saved_albums():
     """
-    Returns list of albums either by using existing cache file or by calling Spotify's API:
+    Returns list of albums either by:
+        a) using existing cache file
+        b) calling Spotify's API:
     [
         ("Album Name 1", "https://open.spotify.com/album/20r762YmB5HeofjMCiP"),
         ("Album Name 2", "https://open.spotify.com/album/98SDG9ngq9nDAHASlap"),
