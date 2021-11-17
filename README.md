@@ -6,6 +6,12 @@
 
 ## Setup – 8 easy steps:
 
+0. If you don't have `git` and `pip`:
+	```
+	sudo apt update
+	sudo apt install git python3-pip
+	```
+
 1. Download the repo:
 	```
 	git clone https://github.com/matejciglenecki/spotify-random-saved-album.git
