@@ -76,7 +76,7 @@ def get_album_name_url(album: Any) -> Tuple[str, str, str]:
     album_name = album["name"]
     album_url = album["external_urls"]["spotify"]
     album_artist = album["artists"][0]["name"]
-    album_uri = album["artists"][0]["name"]
+    album_uri = album["uri"]
     return album_artist, album_name, album_url, album_uri
 
 
