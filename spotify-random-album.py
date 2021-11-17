@@ -1,6 +1,6 @@
 import random
 import os
-from typing import Any, Dict, Tuple
+from typing import Any, Tuple
 import spotipy
 from dotenv import load_dotenv
 from spotipy.oauth2 import SpotifyOAuth
