@@ -44,6 +44,12 @@ parser.add_argument(
     action="store_true",
     help="append artist's name to output",
 )
+parser.add_argument(
+    "--uri",
+    dest="is_uri",
+    action="store_true",
+    help="return URI instead of URL. You can pass URI to spotify.start_playback(context_uri=URI) to play the album instantly (premium required)",
+)
 parser.set_defaults(update_cache=False, no_cache=False, output_name=False)
 args = parser.parse_args()
 if args.no_cache and args.update_cache:
@@ -70,7 +76,8 @@ def get_album_name_url(album: Any) -> Tuple[str, str, str]:
     album_name = album["name"]
     album_url = album["external_urls"]["spotify"]
     album_artist = album["artists"][0]["name"]
-    return album_artist, album_name, album_url
+    album_uri = album["artists"][0]["name"]
+    return album_artist, album_name, album_url, album_uri
 
 
 def get_albums_spotify_accumulate(spotify: spotipy.Spotify):
@@ -146,13 +153,16 @@ def get_saved_albums():
 
 albums = get_saved_albums()
 random_index = random.randint(0, len(albums) - 1)
-album_arist, album_name, album_url = albums[random_index]
+album_arist, album_name, album_url, album_uri = albums[random_index]
 
 output = []
 if args.output_artist:
     output.append(album_arist)
 if args.output_name:
     output.append(album_name)
-output.append(album_url)
+if args.is_uri:
+    output.append(album_uri)
+else:
+    output.append(album_url)
 
 print("\n".join(output))
