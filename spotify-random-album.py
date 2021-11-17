@@ -24,8 +24,11 @@ args = parser.parse_args()
 if args.no_cache and args.update_cache:
     parser.error("--update-cache and --no-cache can't be called together")
 
-cache_filename = Path(os.getcwd(), CACHE_FILENAME_STR)
-load_dotenv()
+dir_path = os.path.dirname(os.path.realpath(__file__))
+cache_filename = Path(dir_path, CACHE_FILENAME_STR)
+cache_oauth_filename = Path(dir_path, ".cache")
+
+load_dotenv(str(Path(dir_path, ".env")))
 ID = os.getenv("ID")
 SEC = os.getenv("SEC")
 
@@ -80,7 +83,7 @@ def get_saved_albums():
                 client_secret=SEC,
                 redirect_uri="http://127.0.0.1:9090",
                 scope="user-library-read",
-            )
+                cache_path=cache_oauth_filename)
         )
 
         results: Any = sp.current_user_saved_albums()
