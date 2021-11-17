@@ -11,7 +11,7 @@ import argparse
 
 
 DAYS_CACHE_HOLD = 10
-FETCH_ALBUMS_LIMIT = 50
+FETCH_ALBUMS_LIMIT = 501
 CACHE_FILENAME_STR = ".cache.json"
 CACHE_OAUTH_FILENAME_STR = ".cache"
 ENV_FILENAME_STR = ".env"
@@ -24,25 +24,25 @@ parser.add_argument(
     "--no-cache",
     dest="no_cache",
     action="store_true",
-    help="Flag which disables cache file creation.",
+    help=".cache.json won't be created",
 )
 parser.add_argument(
     "--update-cache",
     dest="update_cache",
     action="store_true",
-    help="Forces cache update/",
+    help="force update cache file",
 )
 parser.add_argument(
     "--output-name",
     dest="output_name",
     action="store_true",
-    help="Append album's name to output",
+    help="append album's name to output",
 )
 parser.add_argument(
     "--output-artist",
     dest="output_artist",
     action="store_true",
-    help="Append artist's name to output",
+    help="append artist's name to output",
 )
 parser.set_defaults(update_cache=False, no_cache=False, output_name=False)
 args = parser.parse_args()

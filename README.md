@@ -28,7 +28,7 @@
 5. Copy `Client ID` and `Client Secret` from the app's main page
 	![](pics/2021-11-14-17-32-40.png)
 
-6. Create a new file `.env` at the same directory level as `src.py`
+6. Create a new file `.env` at the same directory level as `spotify-random-album.py`
 		
 	replace `MY_CLIENT_ID` and `MY_CLIENT_SEC` with your values and append them to the `.env` file
 	
@@ -45,12 +45,23 @@
 	cat .env
 	```
 
-7. Run `src.py` to get an external Spotify link to a random saved album
+7. Run `spotify-random-album.py` to get an external Spotify link to a random saved album
 	```python
-	python3 src.py
+	python3 spotify-random-album.py
 	```
 	![](pics/2021-11-16-23-40-41.png)
 
+## Usage
+```
+python3 spotify-random-album.py [-h] [--no-cache] [--update-cache] [--output-name] [--output-artist]
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --no-cache       cache file won't be created
+  --update-cache   force update cache file
+  --output-name    append album's name to output
+  --output-artist  append artist's name to output
+```
 ### Notes
 
 You have to pass the OAuth via browser once on last step.
