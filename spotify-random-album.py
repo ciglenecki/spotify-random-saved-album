@@ -10,7 +10,7 @@ import json
 import argparse
 
 DAYS_CACHE_HOLD = 10
-CACHE_FILENAME_STR = ".cache.json"
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--no-cache", dest="no_cache",
@@ -25,10 +25,15 @@ if args.no_cache and args.update_cache:
     parser.error("--update-cache and --no-cache can't be called together")
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
-cache_filename = Path(dir_path, CACHE_FILENAME_STR)
-cache_oauth_filename = Path(dir_path, ".cache")
+CACHE_FILENAME_STR = ".cache.json"
+CACHE_OAUTH_FILENAME_STR = ".cache"
+ENV_FILENAME_STR = ".env"
 
-load_dotenv(str(Path(dir_path, ".env")))
+cache_filename = Path(dir_path, CACHE_FILENAME_STR)
+cache_oauth_filename = Path(dir_path, CACHE_OAUTH_FILENAME_STR)
+env_filename = Path(dir_path, CACHE_OAUTH_FILENAME_STR)
+
+load_dotenv(env_filename)
 ID = os.getenv("ID")
 SEC = os.getenv("SEC")
 
