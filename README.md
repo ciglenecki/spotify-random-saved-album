@@ -4,6 +4,22 @@
 	<img src="pics/2021-11-17-18-29-52.png"></img>
 </p>
 
+## Usage
+```
+python3 spotify-random-album.py [-h] [--no-cache] [--update-cache]
+                               [--output-name] [--output-artist] [--uri]
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --no-cache       .cache.json won't be created
+  --update-cache   force update cache file
+  --output-name    append album's name to output
+  --output-artist  append artist's name to output
+  --uri            return URI instead of URL. You can pass URI to
+                   spotify.start_playback(context_uri=URI) to play the album
+                   instantly (premium required)
+```
+
 ## Setup – 7 easy steps:
 
 1. Install dependencies and clone the repository:
@@ -51,21 +67,6 @@
 	```
 	![](pics/2021-11-16-23-40-41.png)
 
-## Usage
-```
-python3 spotify-random-album.py [-h] [--no-cache] [--update-cache]
-                               [--output-name] [--output-artist] [--uri]
-
-optional arguments:
-  -h, --help       show this help message and exit
-  --no-cache       .cache.json won't be created
-  --update-cache   force update cache file
-  --output-name    append album's name to output
-  --output-artist  append artist's name to output
-  --uri            return URI instead of URL. You can pass URI to
-                   spotify.start_playback(context_uri=URI) to play the album
-                   instantly (premium required)
-```
 ### Notes
 
 You have to pass the OAuth via browser once on last step.
