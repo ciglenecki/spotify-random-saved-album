@@ -36,7 +36,7 @@ optional arguments:
 2. https://developer.spotify.com/dashboard/applications – login and create a new Spotify Developer app	
 	![](pics/2021-11-14-17-30-46.png)
 
-3. On the Dashboard open created app
+3. Open created app on the Dashboard
 
 4. Click `Edit settings` -> `Redirect URIs` -> add redirect URL `http://127.0.0.1:9090`
 	![](pics/2021-11-14-17-36-37.png)
