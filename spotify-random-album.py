@@ -118,12 +118,15 @@ def get_saved_albums():
         ...
     ]
     """
-    is_older_than_hold_days = (
-        datetime.today() - timedelta(days=DAYS_CACHE_HOLD)
-    ).timestamp() > os.path.getmtime(cache_filename)
+
+    def is_older_than_hold_days():
+        return (
+            datetime.today() - timedelta(days=DAYS_CACHE_HOLD)
+        ).timestamp() > os.path.getmtime(cache_filename)
+
     if (
         not os.path.exists(cache_filename)
-        or is_older_than_hold_days
+        or is_older_than_hold_days()  # call here instead of storing because cache might not exist yet
         or args.update_cache
         or args.no_cache
     ):
