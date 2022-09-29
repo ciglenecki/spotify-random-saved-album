@@ -1,13 +1,14 @@
-import random
+import argparse
+import json
 import os
+import random
+from datetime import datetime, timedelta
+from pathlib import Path
 from typing import Any, List, Tuple
+
 import spotipy
 from dotenv import load_dotenv
 from spotipy.oauth2 import SpotifyOAuth
-from pathlib import Path
-from datetime import datetime, timedelta
-import json
-import argparse
 
 
 def main():

@@ -2,14 +2,14 @@
 name = "spotify-random-saved-album"
 description = "Get an URL to a random saved Spotify album."
 readme = "README.rst"
-requires-python = ">=3.10"
+requires-python = ">=3.7"
 license = {file = "LICENCE"}
 authors = [{ name="Matej Ciglenečki"}]
 dependencies = [
     "spotipy",
     "python-dotenv",
 ]
-dynamic = ["version"]
+version="0.0.1"
 
 [project.urls]
 "Homepage" = "https://github.com/ciglenecki/spotify-random-saved-album"

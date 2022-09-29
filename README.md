@@ -1,31 +1,46 @@
 # 🍃 Spotify – get the URL of a random saved album
 
 <p align="center">
-	<img src="pics/2021-11-17-18-29-52.png"></img>
+	<img src="pics/2022-09-29-14-00-00.png"></img>
 </p>
 
-## Usage
+## Quick start
+### 1. Install Python and pip
 ```
-python3 spotify-random-album.py [-h] [--no-cache] [--update-cache]
-                               [--output-name] [--output-artist] [--uri]
+sudo apt install python3 python3-pip
+```
+### 2. Install the package
+```
+pip install spotify-random-saved-album
+```
+### 3. Run the script
+```
+spotify-random-saved-album 
+```
 
-optional arguments:
+
+## Usage
+
+```
+spotify-random-saved-album --h
+usage: spotify-random-saved-album [-h] [--no-cache] [--update-cache] [--output-name] [--output-artist] [--uri]
+
+options:
   -h, --help       show this help message and exit
   --no-cache       .cache.json won't be created
   --update-cache   force update cache file
   --output-name    append album's name to output
   --output-artist  append artist's name to output
-  --uri            return URI instead of URL. You can pass URI to
-                   spotify.start_playback(context_uri=URI) to play the album
-                   instantly (premium required)
+  --uri            return URI instead of URL. You can pass URI to spotify.start_playback(context_uri=URI) to play the album instantly
+                   (premium required)
 ```
 
-## Setup – 7 easy steps:
+## Run without installing the package – 7 steps:
 
 1. Install dependencies and clone the repository:
 	```
 	sudo apt update
-	sudo apt install git python3-pip
+	sudo apt install git python3 python3-pip
 	```
 	```
 	git clone https://github.com/matejciglenecki/spotify-random-saved-album.git
