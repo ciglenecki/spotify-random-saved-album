@@ -1,18 +1,21 @@
 [project]
-name = "spotify_random_saved_album"
-description = "My package description"
+name = "spotify-random-saved-album"
+description = "Get an URL to a random saved Spotify album."
 readme = "README.rst"
-requires-python = ">=3.7"
-license = {text = "BSD 3-Clause License"}
-
+requires-python = ">=3.10"
+license = {file = "LICENCE"}
+authors = [{ name="Matej Ciglenečki"}]
 dependencies = [
     "spotipy",
     "python-dotenv",
 ]
 dynamic = ["version"]
 
+[project.urls]
+"Homepage" = "https://github.com/ciglenecki/spotify-random-saved-album"
+
 [project.scripts]
-spotify-random-album = "spotify_random_saved_album.spotify_random_saved_album:main"
+spotify-random-saved-album = "spotify_random_saved_album.spotify_random_saved_album:main"
 
 [tool.setuptools]
 include-package-data = true
