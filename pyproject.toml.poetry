@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Matej Ciglenečki <matej.ciglenecki@gmail.com>"]
 readme = "README.md"
+include = [".env", ".cache", ".cache.json"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
