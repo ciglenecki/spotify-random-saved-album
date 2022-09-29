@@ -12,15 +12,14 @@ dependencies = [
 dynamic = ["version"]
 
 [project.scripts]
-spotify-random-album = "mymodule.spotify_random_saved_album:main"
+spotify-random-album = "spotify_random_saved_album.spotify_random_saved_album:main"
 
 [tool.setuptools]
 include-package-data = true
-package-data = {"mymodule.resources" = [".env"], "mymodule" = [".env"]}
+package-data = {"spotify_random_saved_album.resources" = [".env", ".cache", ".cache.json"]}
 
 [tool.setuptools.packages.find]
 namespaces = true
-where = ["src"]
 
 
 [build-system]

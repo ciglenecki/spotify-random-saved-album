@@ -8,33 +8,16 @@ from pathlib import Path
 from datetime import datetime, timedelta
 import json
 import argparse
-import datetime
-from importlib.resources import files
 
 
 def main():
-    m_time = os.path.getmtime(Path(__file__).resolve())
-    dt_m = datetime.datetime.fromtimestamp(m_time)
-    print("Modified on:", dt_m)
-
-    me = Path(__file__).parent.resolve()
-    parent = Path(__file__).parent.parent.resolve()
-    for a in sorted(os.listdir(me)):
-        print(me, a)
-    print()
-    for a in sorted(os.listdir(parent)):
-        print(parent, a)
-
-    data_text1 = files("mymodule.resources").joinpath(".env").read_text()
-    data_text2 = files("mymodule").joinpath(".env").read_text()
-    print("1", data_text1)
-    print("2", data_text2)
 
     DAYS_CACHE_HOLD = 10
     FETCH_ALBUMS_LIMIT = 50
-    CACHE_FILENAME_STR = ".cache.json"
-    CACHE_OAUTH_FILENAME_STR = ".cache"
-    ENV_FILENAME_STR = ".env"
+    RESOURCES_PATH = Path("resources")
+    CACHE_PATH = Path(RESOURCES_PATH, ".cache.json")
+    CACHE_OAUTH_PATH = Path(RESOURCES_PATH, ".cache")
+    ENV_PATH = Path(RESOURCES_PATH, ".env")
     ENV_ID_STR = "ID"
     ENV_SECRET_STR = "SEC"
 
@@ -75,9 +58,9 @@ def main():
         parser.error("--update-cache and --no-cache can't be called together")
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    cache_filename = Path(dir_path, CACHE_FILENAME_STR)
-    cache_oauth_filename = Path(dir_path, CACHE_OAUTH_FILENAME_STR)
-    env_filename = Path(dir_path, ENV_FILENAME_STR)
+    cache_filename = Path(dir_path, CACHE_PATH)
+    cache_oauth_filename = Path(dir_path, CACHE_OAUTH_PATH)
+    env_filename = Path(dir_path, ENV_PATH)
 
     load_dotenv(env_filename)
     ID = os.getenv(ENV_ID_STR)
