@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "spotify_random_saved_album"
+version = "0.1.0"
+description = ""
+authors = ["Matej Ciglenečki <matej.ciglenecki@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+spotipy = "^2.20.0"
+python-dotenv = "^0.21.0"
+
+
+[tool.poetry.scripts]
+sptofiy-get-random-album = "src.spotify_random_saved_album:main"
+
+# HAS TO BE AT THE END! OTHERWISE SCRIPT WON'T BE PICKED UP
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
