@@ -12,10 +12,16 @@ dependencies = [
 dynamic = ["version"]
 
 [project.scripts]
-spotify-random-album = "spotify_random_saved_album:main"
+spotify-random-album = "mymodule.spotify_random_saved_album:main"
 
 [tool.setuptools]
-data-files = {'' = ['.env'] }
+include-package-data = true
+package-data = {"mymodule.resources" = [".env"], "mymodule" = [".env"]}
+
+[tool.setuptools.packages.find]
+namespaces = true
+where = ["src"]
+
 
 [build-system]
 requires = ["setuptools", "setuptools-scm"]
