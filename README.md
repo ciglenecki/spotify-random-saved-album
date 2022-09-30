@@ -4,20 +4,6 @@
 	<img src="pics/2022-09-29-14-00-00.png"></img>
 </p>
 
-## Quick start
-### 1. Install Python and pip
-```
-sudo apt install python3 python3-pip
-```
-### 2. Install the package
-```
-pip install spotify-random-saved-album
-```
-### 3. Run the script
-```
-spotify-random-saved-album 
-```
-
 
 ## Usage
 
@@ -35,7 +21,7 @@ options:
                    (premium required)
 ```
 
-## Run without installing the package – 7 steps:
+## Install - 7 steps:
 
 1. Install dependencies and install the script:
 	```
@@ -46,12 +32,13 @@ options:
 	pip install spotify-random-saved-album
 	```
 	
-2. https://developer.spotify.com/dashboard/applications – login and create a new Spotify Developer app	
+2. login and create a new Spotify Developer app	at https://developer.spotify.com/dashboard/applications
 	![](pics/2021-11-14-17-30-46.png)
 
-3. Open created app on the Dashboard
+3. Open the created app on the Dashboard and click `Edit settings`
+	![](pics/2022-09-30-17-59.png)
 
-4. Click `Edit settings` -> `Redirect URIs` -> add redirect URL `http://127.0.0.1:9090`
+4. Go to `Redirect URIs` -> add redirect URL `http://127.0.0.1:9090`
 	![](pics/2021-11-14-17-36-37.png)
 
 5. Copy `Client ID` and `Client Secret` from the app's main page
@@ -59,18 +46,20 @@ options:
 
 6. Create a new file `/path/to/.env` which will contain the Client ID and Client Secret:
 		
-	You can also create and populate `/path/to/.env` with the following commands:
+
+	
+	The `/path/to/.env` file should look like this:
+	```
+	SPOTIFY_ID=YOUR_CLIENT_ID
+	SPOTIFY_SECRET=YOUR_CLIENT_ID
+	```
+
+    (optional): create and populate `/path/to/.env` with the following commands:
 	```bash
 	touch .env # creates .env file
 	echo "SPOTIFY_ID=<YOUR_CLIENT_ID>" >> .env
 	echo "SPOTIFY_SECRET=<YOUR_CLIENT_SEC>" >> .env
 	cat .env
-	```
-	
-	The `.env` file should look like this:
-	```
-	SPOTIFY_ID=854c...
-	SPOTIFY_SECRET=e85e...
 	```
 
 
