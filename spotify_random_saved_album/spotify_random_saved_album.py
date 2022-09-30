@@ -7,7 +7,6 @@ from pathlib import Path
 from typing import Any, List, Tuple
 
 import spotipy
-from dotenv import load_dotenv
 from spotipy.oauth2 import SpotifyOAuth
 
 
@@ -18,9 +17,9 @@ def main():
     RESOURCES_PATH = Path("resources")
     CACHE_PATH = Path(RESOURCES_PATH, ".cache.json")
     CACHE_OAUTH_PATH = Path(RESOURCES_PATH, ".cache")
-    ENV_PATH = Path(RESOURCES_PATH, ".env")
-    ENV_ID_STR = "ID"
-    ENV_SECRET_STR = "SEC"
+
+    ID = os.getenv("SPOTIFY_ID")
+    SEC = os.getenv("SPOTIFY_SECRET")
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -61,11 +60,6 @@ def main():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     cache_filename = Path(dir_path, CACHE_PATH)
     cache_oauth_filename = Path(dir_path, CACHE_OAUTH_PATH)
-    env_filename = Path(dir_path, ENV_PATH)
-
-    load_dotenv(env_filename)
-    ID = os.getenv(ENV_ID_STR)
-    SEC = os.getenv(ENV_SECRET_STR)
 
     def get_album_properties(album: Any) -> Tuple[str, str, str]:
         """
