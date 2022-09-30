@@ -37,15 +37,13 @@ options:
 
 ## Run without installing the package – 7 steps:
 
-1. Install dependencies and clone the repository:
+1. Install dependencies and install the script:
 	```
 	sudo apt update
 	sudo apt install git python3 python3-pip
 	```
 	```
-	git clone https://github.com/matejciglenecki/spotify-random-saved-album.git
-	cd spotify-random-saved-album
-	pip install spotipy python-dotenv
+	pip install spotify-random-saved-album
 	```
 	
 2. https://developer.spotify.com/dashboard/applications – login and create a new Spotify Developer app	
@@ -59,30 +57,37 @@ options:
 5. Copy `Client ID` and `Client Secret` from the app's main page
 	![](pics/2021-11-14-17-32-40.png)
 
-6. Create a new file `.env` at the same directory level as `spotify-random-album.py`
+6. Create a new file `/path/to/.env` which will contain the Client ID and Client Secret:
 		
-	replace `MY_CLIENT_ID` and `MY_CLIENT_SEC` with your values and append them to the `.env` file
-	
-	You can also create and populate `.env` with the following commands:
+	You can also create and populate `/path/to/.env` with the following commands:
 	```bash
 	touch .env # creates .env file
-	echo "ID=MY_CLIENT_ID" >> .env
-	echo "SEC=MY_CLIENT_SEC" >> .env
+	echo "SPOTIFY_ID=<YOUR_CLIENT_ID>" >> .env
+	echo "SPOTIFY_SECRET=<YOUR_CLIENT_SEC>" >> .env
 	cat .env
 	```
 	
 	The `.env` file should look like this:
 	```
-	ID=854c...
-	SEC=e85e...
+	SPOTIFY_ID=854c...
+	SPOTIFY_SECRET=e85e...
 	```
 
 
-7. Run `spotify-random-album.py` to get an external Spotify link to a random saved album
+7. Get the URL of a random saved album:
+   	
+	(Option A) source the `/path/to/.env` (sets $SPOTIFY_ID and $SPOTIFY_SECRET) and run the `spotify-random-saved-album` command
 	```python
-	python3 spotify-random-album.py
+	source /path/to/.env && spotify-random-saved-album
 	```
-	![](pics/2021-11-16-23-40-41.png)
+	
+
+	(Option B) the variables explicitly and run the script:
+	```
+	SPOTIFY_ID=<YOUR_CLIENT_ID> SPOTIFY_SECRET=<YOUR_CLIENT_SEC> spotify-random-saved-album
+	```
+
+
 
 ### Notes
 
