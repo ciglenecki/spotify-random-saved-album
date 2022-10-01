@@ -6,7 +6,7 @@ requires-python = ">=3.7"
 license = { file = "LICENCE" }
 authors = [{ name = "Matej Ciglenečki" }]
 dependencies = ["spotipy"]
-version = "0.0.3"
+version = "0.0.4"
 
 [project.urls]
 "Homepage" = "https://github.com/ciglenecki/spotify-random-saved-album"
@@ -17,8 +17,8 @@ spotify-random-saved-album = "spotify_random_saved_album.spotify_random_saved_al
 [tool.setuptools]
 include-package-data = true
 
-
 [tool.setuptools.packages.find]
+where = ["src"]
 namespaces = false
 
 [build-system]
