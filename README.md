@@ -45,13 +45,11 @@ options:
 	![](pics/2021-11-14-17-32-40.png)
 
 6. Create a new file `/path/to/.env` which will contain the Client ID and Client Secret:
-		
-
 	
 	The `/path/to/.env` file should look like this:
 	```
 	SPOTIFY_ID=YOUR_CLIENT_ID
-	SPOTIFY_SECRET=YOUR_CLIENT_ID
+	SPOTIFY_SECRET=YOUR_CLIENT_SEC
 	```
 
     (optional): create and populate `/path/to/.env` with the following commands:

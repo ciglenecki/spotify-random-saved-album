@@ -61,6 +61,23 @@ def main():
     cache_filename = Path(dir_path, CACHE_PATH)
     cache_oauth_filename = Path(dir_path, CACHE_OAUTH_PATH)
 
+    if (not ID or not SEC) and not os.path.isfile(cache_oauth_filename):
+        print(
+            """
+You need to create the `/path/to/.env` file before running the script. The `/path/to/.env` file should look like this:
+
+        SPOTIFY_ID=YOUR_CLIENT_ID
+        SPOTIFY_SECRET=YOUR_CLIENT_SECRET
+
+After you successfully created the `/path/to/.env` file you can run the script with the following command:
+
+        source /path/to/.env && spotify-random-saved-album
+
+For more info check https://github.com/ciglenecki/spotify-random-saved-album#install---7-steps
+    """
+        )
+        exit(1)
+
     def get_album_properties(album: Any) -> Tuple[str, str, str]:
         """
         Extracts album's properties:
