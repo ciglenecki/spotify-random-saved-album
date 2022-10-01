@@ -1,0 +1,3 @@
+recursive-exclude pics/ *
+recursive-exclude venv/ *
+recursive-exclude src/spotify_random_saved_album/resources*
