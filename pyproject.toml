@@ -23,7 +23,7 @@ include-package-data = true
 
 [tool.setuptools.packages.find]
 namespaces = true
-exclude = ["pics", "spotify_random_saved_album/resources/*"]
+exclude = ["pics", "venv", "spotify_random_saved_album/resources/*"]
 
 [build-system]
 requires = ["setuptools", "setuptools-scm"]
