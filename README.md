@@ -78,6 +78,6 @@ options:
 
 ### Notes
 
-You have to pass the OAuth via browser once on last step.
+You have to pass the OAuth via browser once on the last step.
 
-Personal usecase of this script is to pipe the ouput (external link) to a browser command which will open a random album.
+Personal usecase of this script is to pipe the output (external link) to a browser shortcut which will open a random album.
