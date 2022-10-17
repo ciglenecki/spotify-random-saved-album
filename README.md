@@ -48,8 +48,8 @@ options:
 	
 	The `/path/to/.env` file should look like this:
 	```
-	SPOTIFY_ID=YOUR_CLIENT_ID
-	SPOTIFY_SECRET=YOUR_CLIENT_SEC
+	export SPOTIFY_ID=YOUR_CLIENT_ID
+	export SPOTIFY_SECRET=YOUR_CLIENT_SEC
 	```
 
     (optional): create and populate `/path/to/.env` with the following commands:

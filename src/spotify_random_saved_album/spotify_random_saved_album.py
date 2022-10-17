@@ -66,8 +66,8 @@ def main():
             """
 You need to create the `/path/to/.env` file before running the script. The `/path/to/.env` file should look like this:
 
-        SPOTIFY_ID=YOUR_CLIENT_ID
-        SPOTIFY_SECRET=YOUR_CLIENT_SECRET
+        export SPOTIFY_ID=YOUR_CLIENT_ID
+        export SPOTIFY_SECRET=YOUR_CLIENT_SECRET
 
 After you successfully created the `/path/to/.env` file you can run the script with the following command:
 
