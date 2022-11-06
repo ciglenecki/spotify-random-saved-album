@@ -8,7 +8,8 @@ from pathlib import Path
 from datetime import datetime, timedelta
 import json
 import argparse
-
+import numpy as np
+import spotipy.util as util
 
 DAYS_CACHE_HOLD = 10
 FETCH_ALBUMS_LIMIT = 50
@@ -67,6 +68,19 @@ ID = os.getenv(ENV_ID_STR)
 SEC = os.getenv(ENV_SECRET_STR)
 
 
+spotify = spotipy.Spotify(
+    auth_manager=SpotifyOAuth(
+        client_id=ID,
+        client_secret=SEC,
+        redirect_uri="http://127.0.0.1:9091",
+        scope="playlist-modify-private",
+        cache_path=cache_oauth_filename,
+        username="averagebrick",
+    )
+)
+# token = util.prompt_for_user_token("averagebrick", scope="user-library-read <etc>")
+
+
 def get_album_properties(album: Any) -> Tuple[str, str, str]:
     """
     Extracts album's properties:
@@ -118,15 +132,10 @@ def get_saved_albums():
         ...
     ]
     """
-    is_older_than_hold_days = (
-        datetime.today() - timedelta(days=DAYS_CACHE_HOLD)
-    ).timestamp() > os.path.getmtime(cache_filename)
-    if (
-        not os.path.exists(cache_filename)
-        or is_older_than_hold_days
-        or args.update_cache
-        or args.no_cache
-    ):
+    is_older_than_hold_days = (datetime.today() - timedelta(days=DAYS_CACHE_HOLD)).timestamp() > os.path.getmtime(
+        cache_filename
+    )
+    if not os.path.exists(cache_filename) or is_older_than_hold_days or args.update_cache or args.no_cache:
         """
         Spotify's API is called for the following conditions:
             1. cache doesn't exist
@@ -134,15 +143,6 @@ def get_saved_albums():
             3. cache is force updated by user via --update-cache argument
             4. cache isn't being used via --no-cache argument
         """
-        spotify = spotipy.Spotify(
-            auth_manager=SpotifyOAuth(
-                client_id=ID,
-                client_secret=SEC,
-                redirect_uri="http://127.0.0.1:9090",
-                scope="user-library-read",
-                cache_path=cache_oauth_filename,
-            )
-        )
         albums = get_albums_spotify_accumulate(spotify)
         if not args.no_cache:
             save_albums_to_cache(albums, cache_filename)
@@ -158,17 +158,21 @@ def get_saved_albums():
 
 
 albums = get_saved_albums()
-random_index = random.randint(0, len(albums) - 1)
-album_arist, album_name, album_url, album_uri = albums[random_index]
+random_indices = np.random.choice(len(albums), 5)
+# random_index = random.randint(0, len(albums) - 1)
 
-output = []
-if args.output_artist:
-    output.append(album_arist)
-if args.output_name:
-    output.append(album_name)
-if args.is_uri:
-    output.append(album_uri)
-else:
-    output.append(album_url)
+album_subset = [albums[i] for i in random_indices]
+# album_arist, album_name, album_url, album_uri = albums[random_index]
+print(spotify.user_playlist_create("averagebrick", "tmp", public=False))
 
-print("\n".join(output))
+# output = []
+# if args.output_artist:
+#     output.append(album_arist)
+# if args.output_name:
+#     output.append(album_name)
+# if args.is_uri:
+#     output.append(album_uri)
+# else:
+#     output.append(album_url)
+
+# print("\n".join(output))
