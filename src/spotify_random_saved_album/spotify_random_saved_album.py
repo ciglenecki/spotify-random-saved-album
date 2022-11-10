@@ -20,7 +20,6 @@ def main():
 
     ID = os.getenv("SPOTIFY_ID")
     SEC = os.getenv("SPOTIFY_SECRET")
-
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--no-cache",
@@ -60,8 +59,9 @@ def main():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     cache_filename = Path(dir_path, CACHE_PATH)
     cache_oauth_filename = Path(dir_path, CACHE_OAUTH_PATH)
-
-    if (not ID or not SEC) and not os.path.isfile(cache_oauth_filename):
+    if (not ID or not SEC) and (
+        not os.path.isfile(cache_oauth_filename) or args.no_cache
+    ):
         print(
             """
 You need to create the `/path/to/.env` file before running the script. The `/path/to/.env` file should look like this:

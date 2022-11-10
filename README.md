@@ -55,8 +55,8 @@ options:
     (optional): create and populate `/path/to/.env` with the following commands:
 	```bash
 	touch .env # creates .env file
-	echo "SPOTIFY_ID=<YOUR_CLIENT_ID>" >> .env
-	echo "SPOTIFY_SECRET=<YOUR_CLIENT_SEC>" >> .env
+	echo "export SPOTIFY_ID=<YOUR_CLIENT_ID>" >> .env
+	echo "export SPOTIFY_SECRET=<YOUR_CLIENT_SEC>" >> .env
 	cat .env
 	```
 
