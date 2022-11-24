@@ -76,9 +76,18 @@ After you successfully created the `/path/to/.env` file you can run the script w
 For more info check https://github.com/ciglenecki/spotify-random-saved-album#install---7-steps
     """
         )
-        exit(1)
 
-    def get_album_properties(album: Any) -> Tuple[str, str, str]:
+    spotify = spotipy.Spotify(
+        auth_manager=SpotifyOAuth(
+            client_id=ID,
+            client_secret=SEC,
+            redirect_uri="http://127.0.0.1:9090",
+            scope="playlist-modify-private,playlist-read-private",
+            cache_path=cache_oauth_filename,
+        )
+    )
+
+    def get_album_properties(album: Any) -> tuple[str, str, str, str]:
         """
         Extracts album's properties:
             1. artist's name
@@ -100,12 +109,38 @@ For more info check https://github.com/ciglenecki/spotify-random-saved-album#ins
         "next" returns the next subset of albums in a while loop until all albums are accumulated.
         """
         subset_albums = spotify.current_user_saved_albums(limit=FETCH_ALBUMS_LIMIT)
+        if subset_albums is None:
+            return []
+
         albums = list(map(get_album_properties, subset_albums["items"]))
         while subset_albums["next"]:
             subset_albums = spotify.next(subset_albums)
             album_info = list(map(get_album_properties, subset_albums["items"]))
             albums.extend(album_info)
         return albums
+
+    def get_track_properties(track):
+        return track["uri"]
+
+    def chunker(seq, size):
+        return (seq[pos : pos + size] for pos in range(0, len(seq), size))
+
+    def get_tracks_album_accumulate(spotify: spotipy.Spotify, album_id: str) -> List:
+        """
+        Accumulates all tracks albums into a list.
+        "next" returns the next subset of albums in a while loop until all tracks are accumulated.
+        """
+        subset_tracks = spotify.album_tracks(album_id, limit=FETCH_ALBUMS_LIMIT)
+
+        if subset_tracks is None:
+            return []
+        tracks = list(map(get_track_properties, subset_tracks["items"]))
+
+        while subset_tracks["next"]:
+            subset_tracks = spotify.next(subset_tracks)
+            track_info = list(map(get_track_properties, subset_tracks["items"]))
+            tracks.extend(track_info)
+        return tracks
 
     def save_albums_to_cache(albums, cache_filename):
         """
@@ -115,7 +150,7 @@ For more info check https://github.com/ciglenecki/spotify-random-saved-album#ins
             cache.write(json.dumps(albums))
         cache.close()
 
-    def get_saved_albums():
+    def get_saved_albums() -> list[tuple[str, str, str, str]]:
         """
         Returns list of albums either by:
             a) using existing cache file
@@ -168,20 +203,26 @@ For more info check https://github.com/ciglenecki/spotify-random-saved-album#ins
             return albums
 
     albums = get_saved_albums()
-    random_index = random.randint(0, len(albums) - 1)
-    album_arist, album_name, album_url, album_uri = albums[random_index]
+    # print("albums", albums[0])
+    all_tracks = []
+    for album in albums:
+        # print("album", album)
+        _, _, _, album_uri = album
+        # print(album_uri)
+        all_tracks.extend(
+            get_tracks_album_accumulate(spotify=spotify, album_id=album_uri)
+        )
+        print(len(all_tracks))
+        if len(all_tracks) > 10000:
+            break
 
-    output = []
-    if args.output_artist:
-        output.append(album_arist)
-    if args.output_name:
-        output.append(album_name)
-    if args.is_uri:
-        output.append(album_uri)
-    else:
-        output.append(album_url)
-
-    print("\n".join(output))
+    # spotify.get
+    for tracks in chunker(all_tracks[:9999], 100):
+        print(len(tracks), tracks[0])
+        spotify.playlist_add_items(
+            "3w46OMQW6JvQ5u4unZx8h5",
+            tracks,
+        )
 
 
 if __name__ == "__main__":
